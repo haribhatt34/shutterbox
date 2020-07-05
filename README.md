@@ -1,3 +1,3 @@
 # Shutter Box
 
-An Awesome Photo Gallery application writte in Go!
+An Awesome Photo Gallery application written in Go!
