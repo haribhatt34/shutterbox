@@ -56,3 +56,9 @@ builds/**/images/*
 
 # Anything under a tmp folder
 **/tmp/*
+
+# Ignore Binaries
+shutterbox
+
+# Ignore .gitignore
+.gitignore
