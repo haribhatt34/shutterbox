@@ -24,7 +24,7 @@ func handlerFunc(w http.ResponseWriter, r *http.Request) {
 
 	if r.URL.Path == "/" {
 		fmt.Fprint(w, "<h1>Welcome to my Awesome site!</h1>")
-	} else if r.URL.Path == "/contact" {
+	} else if r.URL.Path == "/contact" || r.URL.Path == "/contact/" {
 		// we can also use `` around string, to spread it into multiple lines.
 		fmt.Fprint(w, "To get in touch, please send us a mail to <a href=\"mailto:shutterbox@gmail.com\"> shutterbox@gmailcom </a>.")
 		fmt.Fprint(w, "<br><br>")
@@ -38,8 +38,13 @@ func handlerFunc(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+	// A small Caveat, HandleFunc always matches the largest path,
+	// irrespective of the order, i.e. which mapping if defined early.
+	mux := &http.ServeMux{}
+	mux.HandleFunc("/", handlerFunc)
+	http.ListenAndServe(":3000", mux)
 	// maps the root to a method
-	http.HandleFunc("/", handlerFunc)
+	//http.HandleFunc("/", handlerFunc)
 	// starts the server
-	http.ListenAndServe(":3000", nil)
+	//http.ListenAndServe(":3000", nil)
 }
