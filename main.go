@@ -30,6 +30,9 @@ func handlerFunc(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprint(w, "<br><br>")
 		fmt.Fprint(w, "Thanks For Visiting!!!")
 	} else {
+		// If WriteHeader is not called explicitly, the first call to Write
+		// will trigger an implicit WriteHeader(http.StatusOK).
+		w.WriteHeader(http.StatusNotFound)
 		fmt.Fprint(w, "<h1> 404, Page Not found !!!")
 	}
 
