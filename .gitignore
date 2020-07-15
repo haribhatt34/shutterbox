@@ -61,7 +61,7 @@ builds/**/images/*
 shutterbox
 
 # Ignore .gitignore
-.gitignore
+.gitignor
 
-# Ignore .additionNotes.go
-.additionNotes.go
+# Ignore .additionalNotes.go
+.additionalNotes.go
