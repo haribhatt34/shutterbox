@@ -57,6 +57,9 @@ builds/**/images/*
 # Anything under a tmp folder
 **/tmp/*
 
+# Anything under Homework folder
+/Homework/*
+
 # Ignore Binaries
 shutterbox
 
