@@ -40,18 +40,25 @@ func notfound(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	var err error
-	homeTemplate, err = template.ParseFiles("views/home.gohtml")
+	homeTemplate, err = template.ParseFiles(
+		"views/home.gohtml",
+		"views/layouts/footer.gohtml",
+	)
 	if err != nil {
 		panic(err)
 	}
-	contactTemplate, err = template.ParseFiles("views/contact.gohtml")
+	contactTemplate, err = template.ParseFiles(
+		"views/contact.gohtml",
+		"views/layouts/footer.gohtml",
+	)
 	if err != nil {
 		panic(err)
 	}
+
 	r := mux.NewRouter()
 	r.NotFoundHandler = http.HandlerFunc(notfound)
 	r.HandleFunc("/", home)
-	r.HandleFunc("/contact/", contact)
+	r.HandleFunc("/contact", contact)
 	r.HandleFunc("/faq", faq)
 	http.ListenAndServe(":3000", r)
 }
