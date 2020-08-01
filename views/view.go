@@ -4,8 +4,11 @@ import "html/template"
 
 // NewView groups templates together
 // it takes variadic parameters
-func NewView(files ...string) *View {
-	files = append(files, "views/layouts/footer.gohtml")
+func NewView(layout string, files ...string) *View {
+	files = append(files,
+		"views/layouts/bootstrap.gohtml",
+		"views/layouts/footer.gohtml",
+	)
 
 	//again, below slices withing files are unpacked
 	t, err := template.ParseFiles(files...)
@@ -15,10 +18,12 @@ func NewView(files ...string) *View {
 
 	return &View{
 		Template: t,
+		Layout:   layout,
 	}
 }
 
 // View type defined
 type View struct {
 	Template *template.Template
+	Layout   string
 }
